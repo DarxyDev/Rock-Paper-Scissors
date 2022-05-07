@@ -6,7 +6,7 @@ const WIN = "win";
 const LOSE = "lose";
 const TIE = "tie";
 
-main();
+//main();
 
 function main(){
     let keepPlaying = true;
