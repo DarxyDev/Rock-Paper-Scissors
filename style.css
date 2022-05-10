@@ -1,0 +1,43 @@
+html{
+    height:100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color:black;
+    height:100%;
+    display:flex;
+    align-items:center;
+
+}
+#mainContainer{
+    display:flex;
+    width:100%;
+    justify-content:center;
+    overflow:hidden;
+}
+#gameboy{
+    background-image: url('images/gbc_1400x1080.jpeg');
+    height: 100vh;
+    aspect-ratio:1400/1080;
+    background-size:contain;
+    background-repeat:no-repeat;
+
+}
+#viewscreen{
+    background-color:rgb(255, 255, 255);
+    padding:1%;
+    position:relative;
+    height:67.6%;
+    width:57%;
+    top:14.9%;
+    left:20.6%;
+    border-radius:1%;
+
+}
+
+
+/* Game Screens */
+
+
+/* Intro */
