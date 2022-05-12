@@ -1,43 +1,89 @@
-html{
-    height:100%;
+@font-face {
+    font-family: pokemonClassic;
+    src: url('fonts/Pokemon\ Classic.ttf');
 }
-body{
+@font-face{
+    font-family: pokemonTitle;
+    src:url('fonts/Pokemon\ Solid.ttf');
+}
+
+html {
+    height: 100%;
+}
+
+body {
     margin: 0;
     padding: 0;
-    background-color:black;
-    height:100%;
-    display:flex;
-    align-items:center;
+    background-color: black;
+    height: 100%;
+    display: flex;
+    align-items: center;
 
 }
-#mainContainer{
-    display:flex;
-    width:100%;
-    justify-content:center;
-    overflow:hidden;
+
+#mainContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
 }
-#gameboy{
+
+#gameboy {
     background-image: url('images/gbc_1400x1080.jpeg');
     height: 100vh;
-    aspect-ratio:1400/1080;
-    background-size:contain;
-    background-repeat:no-repeat;
-
-}
-#viewscreen{
-    background-color:rgb(255, 255, 255);
-    padding:1%;
-    position:relative;
-    height:67.6%;
-    width:57%;
-    top:14.9%;
-    left:20.6%;
-    border-radius:1%;
+    aspect-ratio: 1400/1080;
+    background-size: contain;
+    background-repeat: no-repeat;
 
 }
 
+#viewscreen {
+    background-color: rgb(255, 255, 255);
+    padding: 1%;
+    position: relative;
+    height: 67.6%;
+    width: 57%;
+    top: 14.9%;
+    left: 20.6%;
+    border-radius: 1%;
+    font-family: pokemonClassic;
+    overflow:hidden;
 
-/* Game Screens */
+}
+
+#viewContainer{
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.radialBackground{
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 6%,
+            rgba(119, 87, 209, 1) 16%, rgba(252, 70, 107, 1) 36%, rgba(252, 70, 107, 1) 50%,
+            rgba(199, 77, 148, 1) 60%, rgba(145, 84, 189, 1) 75%);
+  }
 
 
 /* Intro */
+
+.loadingText{
+    position:relative;
+    top:20%;
+    font-family:pokemonTitle;
+    font-size:7vh;
+    animation:textShine 5s infinite;
+    color:radial-gradient(circle, rgba(63, 94, 251, 1) 6%,
+    rgba(119, 87, 209, 1) 16%, rgba(252, 70, 107, 1) 36%, rgba(252, 70, 107, 1) 50%,
+    rgba(199, 77, 148, 1) 60%, rgba(145, 84, 189, 1) 75%);
+}
+
+@keyframes textShine{
+    0%{
+        
+    }
+    100%{
+        
+    }
+}
