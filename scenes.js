@@ -20,7 +20,8 @@ const sc_helloThere = {
 }
 
 function initialText(target){
-    slowText(target.messages[target.currentMessage], target.textBox, 500, true);
+    slowText(target.messages[target.currentMessage], target.textBox);
+    target.odin.classList.add("shake");
 
 }
 function continueText(target){
@@ -30,7 +31,7 @@ function continueText(target){
     }
     if(target.currentMessage + 1 < target.messages.length){
         target.currentMessage++;
-        slowText(target.messages[target.currentMessage], target.textBox, 500, true);
+        slowText(target.messages[target.currentMessage], target.textBox);
     }    
 }
 

@@ -4,10 +4,10 @@ let currentScene = sc_title;
 document.addEventListener('keydown', getKey);
 
 ////////////////////////slowText
-const TEXTDELAY = 100;
+const TEXTDELAY = 75;
 let slowTextRunning = false;
 let interruptSlowText = false;
-async function slowText(text, target, initialDelay = TEXTDELAY, startFresh = false){
+async function slowText(text, target, initialDelay = 500, startFresh = true){
     slowTextRunning = true;
     if(startFresh) target.innerText = '';
     if(interruptSlowText){
@@ -37,6 +37,7 @@ function timer(ms){ return new Promise(res => setTimeout(res, ms));}
 function finishSlowText(){
     interruptSlowText = true;
 }
+////////////////////////animation test
 
 ////////////////////////scene changing
 function changeScene(scene){
