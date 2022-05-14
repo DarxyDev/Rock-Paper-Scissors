@@ -7,15 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
+    <script src="scenes.js" defer></script>
     <script src="ui-manager.js" defer></script>
+    <script src="main.js" defer></script>
 </head>
 
 <body>
     <div id='mainContainer'>
         <div id='gameboy'>
             <div id='viewscreen'>
-                <div id='viewContainer'>
-                    <div class='loadingText'>Rock Paper Scissors!</div>
+                <div id='sc_title'>
+                    <div class='radialBackground'></div>
+                    <div class = 'titleContainer'>
+                        <div class='titleText'>Rock Paper Scissors</div>
+                        <div class = 'titlePressAny'>Press any button</div>
+                    </div>
+                </div>
+                <div id = 'sc_helloThere' class = 'hidden'>
+                    <div class = 'odin'></div>
+                    <div class='bottomContainer'>
+                        <div class='bottomTextBox'></div>
+                    </div>
+                </div>
+                <div id = 'sc_nameSelect' class = 'hidden'>
+
                 </div>
             </div>
         </div>

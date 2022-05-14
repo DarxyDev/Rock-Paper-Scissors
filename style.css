@@ -38,52 +38,120 @@ body {
 }
 
 #viewscreen {
-    background-color: rgb(255, 255, 255);
-    padding: 1%;
+    background-color: white;
+    /* padding: 1%; */
     position: relative;
-    height: 67.6%;
+    /* height: 67.6%;
     width: 57%;
     top: 14.9%;
+    left: 20.6%; */
+    height: 69.9%;
+    width: 59%;
+    top: 15%;
     left: 20.6%;
     border-radius: 1%;
     font-family: pokemonClassic;
+    font-size: 3vh;
     overflow:hidden;
 
 }
 
-#viewContainer{
-    height:100%;
-    width:100%;
-    display:flex;
-    justify-content:center;
-}
-
 .radialBackground{
+    padding:0;
+    margin:0;
+    position:absolute;
+    height:175vh;
+    width:100%;
     background: rgb(63, 94, 251);
     background: radial-gradient(circle, rgba(63, 94, 251, 1) 6%,
             rgba(119, 87, 209, 1) 16%, rgba(252, 70, 107, 1) 36%, rgba(252, 70, 107, 1) 50%,
             rgba(199, 77, 148, 1) 60%, rgba(145, 84, 189, 1) 75%);
   }
+/* Animations */
+@keyframes flashing{
+    0%{
+        opacity:1;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
 
+/* Scenes */
 
-/* Intro */
+.hidden{
+    display:none!important;
+}
 
-.loadingText{
-    position:relative;
+/* title*/
+
+#sc_title{
+    height:100%;
+    width:100%;
+}
+.titleContainer{
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+.titleText{
+    position:absolute;
     top:20%;
     font-family:pokemonTitle;
     font-size:7vh;
-    animation:textShine 5s infinite;
-    color:radial-gradient(circle, rgba(63, 94, 251, 1) 6%,
-    rgba(119, 87, 209, 1) 16%, rgba(252, 70, 107, 1) 36%, rgba(252, 70, 107, 1) 50%,
-    rgba(199, 77, 148, 1) 60%, rgba(145, 84, 189, 1) 75%);
+}
+.titlePressAny{
+    position:absolute;
+    bottom:20%;
+    animation: flashing 1s infinite alternate;
+}
+/* Hello there! */
+/*TODO: add odin mascot
+make text show up letter by letter
+make odin shake with text animation
+Open keyboard after welcome
+Enter name
+Show player icon options*/
+#sc_helloThere{
+    height: 100%;
+    width: 100%;
+}
+.odin{
+    background-image: url('images/odin-mascot.svg');
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+    position:absolute;
+    height:30%;
+    width:100%;
+    top:18%;
+}
+.bottomContainer{
+    display:flex;
+    position:absolute;
+    bottom:2%;
+    width:100%;
+    height:30%;
+    justify-content:center;
+    align-items:center;
+}
+.bottomTextBox{
+    width:95%;
+    height:95%; 
+    border-style:solid double;
+    border-radius:2%;
+    border-width:5px;
+    padding:1%;
 }
 
-@keyframes textShine{
-    0%{
-        
-    }
-    100%{
-        
-    }
+
+/*nameSelect*/
+#sc_nameSelect{
+    height:100%;
+    width:100%;
+
 }
