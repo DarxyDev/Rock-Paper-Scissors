@@ -62,31 +62,6 @@ body {
             rgba(119, 87, 209, 1) 16%, rgba(252, 70, 107, 1) 36%, rgba(252, 70, 107, 1) 50%,
             rgba(199, 77, 148, 1) 60%, rgba(145, 84, 189, 1) 75%);
   }
-/* Animations */
-@keyframes flashing{
-    0%{
-        opacity:1;
-    }
-    20%{
-        opacity:1;
-    }
-    100%{
-        opacity:0;
-    }
-}
-
-@keyframes shake{
-    0%{
-        transform: translate(0px, 0px);
-    }
-    100%{
-        transform: translate(0px, 5px);
-    }
-}
-
-.shake{
-    animation: shake .25s infinite alternate;
-}
 
 /* Scenes */
 
@@ -117,16 +92,15 @@ body {
     bottom:20%;
     animation: flashing 1s infinite alternate;
 }
-/* Hello there! */
-/*TODO: add odin mascot
-make text show up letter by letter
-make odin shake with text animation
-Open keyboard after welcome
-Enter name
-Show player icon options*/
+/*helloThere*/
 #sc_helloThere{
     height: 100%;
     width: 100%;
+}
+
+.odinContainer{
+    height:100%;
+    width:100%;
 }
 .odin{
     background-image: url('images/odin-mascot.svg');

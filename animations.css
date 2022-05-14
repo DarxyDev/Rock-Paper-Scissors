@@ -1,0 +1,42 @@
+@keyframes flashing{
+    0%{
+        opacity:1;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+@keyframes bounce{
+    0%{
+        transform: translate(0px, 0px);
+    }
+    100%{
+        transform: translate(0px, .33%);
+    }
+}
+
+.bounce{
+    animation: bounce .3s infinite alternate;
+}
+
+@keyframes shake{
+    0%{
+        transform:rotate(0turn);
+    }
+    33%{
+        transform:rotate(0.005turn);
+    }
+    67%{
+        transform:rotate(0turn);
+    }
+    100%{
+        transform:rotate(-0.005turn);
+    }
+}
+.shake{
+    animation: shake .05s;
+}

@@ -3,8 +3,24 @@ const SC_title = document.getElementById('sc_title');
 const sc_title = {
     main:SC_title,
     keyPress: ()=>{changeScene(sc_helloThere);},
-    click: ()=>{changeScene(sc_helloThere);}
+    click: ()=>{changeScene(sc_helloThere);},
+    init:curveText(SC_title.querySelector('.titleText'))
 }
+
+
+function curveText(target){
+    let str = target.textContent;
+    //target.textContent = '';
+    
+    let divArray = [];
+    for(let i = 0; i < str.length; i++){
+        divArray.push(document.createElement('div'));
+        divArray[i].textContent = str[i];
+    }
+
+
+}
+
 
 //////////////////////// Scene: helloThere
 const SC_helloThere = document.getElementById('sc_helloThere');
@@ -20,8 +36,7 @@ const sc_helloThere = {
 }
 
 function initialText(target){
-    slowText(target.messages[target.currentMessage], target.textBox);
-    target.odin.classList.add("shake");
+    slowText(target.messages[target.currentMessage], target.textBox, ()=>{shakeTarget(target.odin)});
 
 }
 function continueText(target){
@@ -31,7 +46,7 @@ function continueText(target){
     }
     if(target.currentMessage + 1 < target.messages.length){
         target.currentMessage++;
-        slowText(target.messages[target.currentMessage], target.textBox);
+        slowText(target.messages[target.currentMessage], target.textBox,()=>{shakeTarget(target.odin)});
     }    
 }
 
