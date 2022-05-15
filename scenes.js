@@ -41,7 +41,7 @@ const sc_helloThere = {
     odin: SC_helloThere.querySelector('.odin'),
     textBox: SC_helloThere.querySelector('.bottomTextBox'),
     messages:['Hello, there!', 'I can\'t seem to recall your name.', 'Could you remind me?', 
-    ()=>{getUserName(sc_helloThere)},'Your name is ${userName}.'],
+    ()=>{getUserName(sc_helloThere)},'${userName} is it?', 'Now, what do you look like?', ()=>{changeScene(sc_characterSelect);}],
     currentMessage:0,
     nextScene: null,
     keyPress: ()=>{continueText(sc_helloThere)},
@@ -97,8 +97,20 @@ function keyPressUserName(e){
         sc_helloThere.textBox.textContent += e.key;
     }
 }
-
+//////////////////////// Scene: Character Select
+const SC_characterSelect = document.getElementById('sc_characterSelect');
+const sc_characterSelect = {
+    main: SC_characterSelect,
+    odin: null,
+    textBox: null,
+    messages:null, 
+    currentMessage:null,
+    nextScene: null,
+    keyPress: log,
+    click: log,
+    init: log
+}
 ////////////////////////universal functions
-function log(e){
+function log(e = ''){
 //    console.log(e);
 }

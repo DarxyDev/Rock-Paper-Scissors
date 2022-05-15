@@ -10,6 +10,16 @@
     }
 }
 
+@keyframes arrowAnimation{
+    0%{
+        opacity:1;
+        transform:scale(100%);
+    }
+    100%{
+        transform:scale(120%);
+    }
+}
+
 @keyframes bounce{
     0%{
         transform: translate(0px, 0px);

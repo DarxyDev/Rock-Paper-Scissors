@@ -132,9 +132,36 @@ body {
 }
 
 
-/*nameSelect*/
-#sc_nameSelect{
+/*characterSelect*/
+#sc_characterSelect{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.arrow{
+    width:30%;
+    padding-top:10%;
+    animation: arrowAnimation 1s infinite alternate;
+    font-family:pokemonTitle;
+    font-size: 12vh;
+    cursor:pointer;
+    text-align:center;
+}
+
+.characterDisplay{
+    width:70%;
+    height:70%;
+}
+
+#characterImage{
     height:100%;
     width:100%;
-
+    aspect-ratio:1;
+    background-image: url('images/mersnow400x400.png');
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }

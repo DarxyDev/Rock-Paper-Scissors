@@ -12,11 +12,11 @@ function shakeTarget(target){
 }
 ////////////////////////scene changing
 function changeScene(scene){
+    if(scene == undefined) return;
     currentScene.main.classList.add('hidden');
     currentScene = scene;
     currentScene.main.classList.remove('hidden');
     if(currentScene.init != undefined)currentScene.init();
-    else console.log('doesnt exist');
 }
 
 ////////////////////////Universal

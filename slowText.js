@@ -11,6 +11,7 @@ async function slowText(text, target,funct, startFresh = true){
         slowTextRunning = false;
         return;
     }
+    text = convertVariablesToString(text);
     await timer(INITIAL_TEXTDELAY);
     for(let i = 0; i < text.length; i++){
         if(interruptSlowText){
@@ -47,16 +48,14 @@ function isLetter(char){
     return false;
 }
 
-console.log('working on convertVariableToString in slowText');
-let num = 7;
-convertVariablesToString();
-function convertVariablesToString(text){
-    text = 'test${num}';
-    let indexStart = text.indexOf('${');
+function convertVariablesToString(text = '', start = 0){
+    if(text == '') return text;
+    let indexStart = text.indexOf('${', start);
     if(indexStart === -1) return text;
     let indexEnd = text.indexOf('}',indexStart);
-    let variable = text.slice(indexStart + 2,indexEnd);
-    console.log(eval(variable));
-    
-
+    if(indexEnd === -1) return convertVariablesToString(text, indexStart + 1);
+    let varName = text.slice(indexStart + 2,indexEnd);
+    if(varName !== '')varName = eval(varName);
+    let varText = text.slice(0,indexStart) + varName + text.slice(indexEnd + 1, text.length);
+    return convertVariablesToString(varText);
 }
