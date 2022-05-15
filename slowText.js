@@ -46,3 +46,17 @@ function isLetter(char){
     if(charCode <= zCode && charCode >= aCode ) return true;
     return false;
 }
+
+console.log('working on convertVariableToString in slowText');
+let num = 7;
+convertVariablesToString();
+function convertVariablesToString(text){
+    text = 'test${num}';
+    let indexStart = text.indexOf('${');
+    if(indexStart === -1) return text;
+    let indexEnd = text.indexOf('}',indexStart);
+    let variable = text.slice(indexStart + 2,indexEnd);
+    console.log(eval(variable));
+    
+
+}

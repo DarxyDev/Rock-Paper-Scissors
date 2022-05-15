@@ -124,6 +124,7 @@ body {
 .bottomTextBox{
     width:95%;
     height:95%; 
+    white-space: pre-line;
     border-style:solid double;
     border-radius:2%;
     border-width:5px;
