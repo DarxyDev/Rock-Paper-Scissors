@@ -43,8 +43,7 @@ const messages = [
     '${userName} is it?',
     'Now, what do you look like?',
     () => { changeScene(sc_characterSelect); },
-    'Ahh, yes.',
-    'more testing',
+    
 ]
 
 const SC_helloThere = document.getElementById('sc_helloThere');
