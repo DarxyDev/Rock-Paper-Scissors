@@ -140,12 +140,40 @@ function cycleCharacterIcon(next = true) {
 }
 
 //////////////////////// Scene: Battle
+let battleButtons = [];
+let battleArrows = [];
+for(let i = 0; i < 4; i++){
+    battleButtons.push(document.getElementById('button'+(i)));
+    battleButtons[i].addEventListener('mouseover', setMenuSelected);
+    battleButtons[i].addEventListener('click', useMenuSelected);
+    battleArrows.push(document.getElementById('buttonArrow'+(i)));
+}
 SC_battle = document.getElementById('sc_battle');
 sc_battle = {
     main: SC_battle,
-    
+    buttons: battleButtons,
+    arrows: battleArrows,
+    keyPress: log,
+    click: log,
+    init: log
 }
+let currentMenu = 0;
+function setMenuSelected(e = null){
+    if(e === null)return;
+    let key = e.target.getAttribute('data-key');
+    sc_battle.arrows[currentMenu].classList.add('invisible');
+    currentMenu = key;
+    sc_battle.arrows[key].classList.remove('invisible');
+
+
+}
+function useMenuSelected(){
+    let selected = sc_battle.buttons[currentMenu];
+    console.log(selected.textContent);
+}
+setMenuSelected();
+console.log('working on scenes.js -->battle');
 ////////////////////////universal functions
 function log(e = '') {
-    //    console.log(e);
+       // console.log(e);
 }

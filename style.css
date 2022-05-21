@@ -74,6 +74,9 @@ body {
 .hidden{
     display:none!important;
 }
+.invisible{
+    visibility: hidden;
+}
 .pokeBorder{
     border-style:solid double;
     border-radius:2%;
@@ -222,7 +225,6 @@ body {
     height:100%;
 }
 #bottomMenu{
-    width:180%;
     height:95%;
 }
 .menuButtonRow{
@@ -238,4 +240,9 @@ body {
     border:solid;
     border-width:1px;
 }
+table{
+    border-spacing:1vh 3vh;
+}
+
+
 
