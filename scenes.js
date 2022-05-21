@@ -43,7 +43,8 @@ const messages = [
     '${userName} is it?',
     'Now, what do you look like?',
     () => { changeScene(sc_characterSelect); },
-    
+    'Battle time.',
+    () => { changeScene(sc_battle)}    
 ]
 
 const SC_helloThere = document.getElementById('sc_helloThere');
@@ -138,6 +139,12 @@ function cycleCharacterIcon(next = true) {
     player.icon = playerCharChoices[currentIcon];
 }
 
+//////////////////////// Scene: Battle
+SC_battle = document.getElementById('sc_battle');
+sc_battle = {
+    main: SC_battle,
+    
+}
 ////////////////////////universal functions
 function log(e = '') {
     //    console.log(e);
