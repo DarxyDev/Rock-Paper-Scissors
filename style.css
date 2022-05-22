@@ -243,6 +243,34 @@ body {
 table{
     border-spacing:1vh 3vh;
 }
+#battleScreen{
+    width:98.1%;
+    height:65%;
+    padding:1%;
+    display:flex;
+    flex-direction:column;
+}
+.bScreenRow{
+    height:100%;
+    width:100%;
+    display:flex;
+}
+.bScreenSection{
+    height:100%;
+    width:100%;
+
+}
+#bPlayerIcon{
+    background-image: url('images/mersnow400x400.png');
+    transform:scalex(-1);
+}
+.battleIcon{
+
+    background-image: url('images/mersnow400x400.png');
+    background-position:right;
+    background-size:contain;
+    background-repeat:no-repeat;
+}
 
 
 

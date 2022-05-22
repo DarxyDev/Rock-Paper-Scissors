@@ -8,10 +8,10 @@
     <title>Rock Poké Scissors</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animations.css">
+    <script src="players.js" defer></script>
     <script src="scenes.js" defer></script>
     <script src="ui-manager.js" defer></script>
     <script src="slowText.js" defer></script>
-    <script src="players.js" defer></script>
     <script src="main.js" defer></script>
 </head>
 
@@ -50,8 +50,16 @@
                     </div>
                 </div>
                 <div id='sc_battle' class='hidden'>
-
-
+                    <div id = 'battleScreen'>
+                        <div class = 'bScreenRow' >
+                            <div class = 'bScreenSection' id = 'bEnemyInfo'></div>
+                            <div class = 'bScreenSection battleIcon' id = 'bEnemyIcon'></div>
+                        </div>
+                        <div class = 'bScreenRow'>
+                            <div class = 'bScreenSection battleIcon' id = 'bPlayerIcon'></div>
+                            <div class = 'bScreenSection' id = 'bPlayerInfo'></div>
+                        </div>
+                    </div>
                     <div class='bottomContainer'>
                         <div class='bottomTextBox pokeBorder'></div>
                         <div id='bottomMenu' class='pokeBorder'>

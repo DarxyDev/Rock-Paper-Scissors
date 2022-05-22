@@ -153,9 +153,16 @@ sc_battle = {
     main: SC_battle,
     buttons: battleButtons,
     arrows: battleArrows,
+    playerIcon: document.getElementById('bPlayerIcon'),
+    playerInfo: document.getElementById('bPlayerInfo'),
+    enemyIcon: document.getElementById('bEnemyIcon'),
+    enemyInfo: document.getElementById('bEnemyInfo'),
     keyPress: log,
     click: log,
     init: log
+}
+function setBattleIcon(target, icon = playerCharChoices[0]){
+    target.style.backgroundImage = `url(${icon.toString()})`;
 }
 let currentMenu = 0;
 function setMenuSelected(e = null){
