@@ -271,6 +271,57 @@ table{
     background-size:contain;
     background-repeat:no-repeat;
 }
+.battleInfo{
+    display:flex;
+    flex-direction:column;
+    justify-content:end;
+    align-items:flex-end;
+    width:90%;
+    margin:.5%;
+}
+#bPlayerName{
+
+}
+#bPlayerBorder{
+    padding-left:4vh;
+    border-style: none solid solid none;
+    border-width:.7vh;
+    border-end-end-radius: 3vh .6vh;
+    direction: rtl;
+    text-align:end;
+
+}
+.unDirection{
+    direction:ltr;
+}
+#bPlayerLevel{
+    padding-right:5vh;
+    font-weight:bolder;
+    font-size:2vh;
+}
+#bPlayerHP{
+    display:flex;
+    justify-content:end;
+    align-items:flex-end;
+    padding-right:1vh;
+    font-size: 1.25vh;
+    font-weight: bolder;
+    text-shadow: .1vh 0, .1vh 0,.1vh 0,.1vh 0,
+                    .1vh 0.1vh 0,.1vh 0,.1vh 0;
+    ;/**/
+
+}
+#bPlayerHPBar{
+    background-color:#48B258;
+    height:1vh;
+    border:solid;
+    border-width:.1;
+    border-radius:1vh;
+    width:15vh;
+}
+#bPlayerHPText{
+
+}
 
 
 

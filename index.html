@@ -50,14 +50,26 @@
                     </div>
                 </div>
                 <div id='sc_battle' class='hidden'>
-                    <div id = 'battleScreen'>
-                        <div class = 'bScreenRow' >
-                            <div class = 'bScreenSection' id = 'bEnemyInfo'></div>
-                            <div class = 'bScreenSection battleIcon' id = 'bEnemyIcon'></div>
+                    <div id='battleScreen'>
+                        <div class='bScreenRow'>
+                            <div class='battleInfo' id='bEnemyInfo'></div>
+                            <div class='bScreenSection battleIcon' id='bEnemyIcon'></div>
                         </div>
-                        <div class = 'bScreenRow'>
-                            <div class = 'bScreenSection battleIcon' id = 'bPlayerIcon'></div>
-                            <div class = 'bScreenSection' id = 'bPlayerInfo'></div>
+                        <div class='bScreenRow'>
+                            <div class='bScreenSection battleIcon' id='bPlayerIcon'></div>
+                            <div class='battleInfo' id='bPlayerInfo'>
+                                <div id='bPlayerName'>Pikachu</div>
+                                <div id='bPlayerLevel'>:L5</div>
+                                <div id='bPlayerBorder'>
+                                    <div class='unDirection'>
+                                        <div id='bPlayerHP'>
+                                            <div>HP:</div>
+                                            <div id='bPlayerHPBar'></div>
+                                        </div>
+                                        <div id='bPlayerHPText'>15/19</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class='bottomContainer'>
@@ -66,15 +78,15 @@
                             <table>
                                 <tr class='menuButtonRow'>
                                     <td id='buttonArrow0'>></td>
-                                    <td id='button0' data-key = 0>Rock</td>
+                                    <td id='button0' data-key=0>Rock</td>
                                     <td id='buttonArrow1' class='invisible'>></td>
-                                    <td id='button1' data-key = 1>Paper</td>
+                                    <td id='button1' data-key=1>Paper</td>
                                 </tr>
                                 <tr class='menuButtonRow'>
                                     <td id='buttonArrow2' class='invisible'>></td>
-                                    <td id='button2' data-key = 2>Scissor</td>
+                                    <td id='button2' data-key=2>Scissor</td>
                                     <td id='buttonArrow3' class='invisible'>></td>
-                                    <td id='button3' data-key = 3>Run</td>
+                                    <td id='button3' data-key=3>Run</td>
                                 </tr>
                             </table>
                         </div>

@@ -8,31 +8,8 @@ const sc_title = {
     main: SC_title,
     keyPress: () => { changeScene(sc_helloThere); },
     click: () => { changeScene(sc_helloThere); },
-    //init:curveText(SC_title.querySelector('.titleText'))  //unfinished and unused
 }
-/*                                                          //unfinished and unused
-function curveText(target){
-    let str = target.textContent;
-    target.textContent = '';
-    target.style.display = 'flex';
-    target.style.justifyContent = 'center';
 
-    let divArray = [];
-    for(let i = 0; i < str.length; i++){
-        divArray.push(document.createElement('div'));
-        divArray[i].textContent = str[i];
-        divArray[i].style.whiteSpace = 'pre';
-        target.appendChild(divArray[i]);
-    }
-}
-const curveMaxHeight = '20';
-const curvHeightUnit = '%';
-const curveMaxRotate = '20';
-const curveRotateUnit = 'deg';
-function getTransformMultiplier(pos, max){ //starts at 1
-    let isEven = (max % 2 == 0);
-}
-*/
 
 //////////////////////// Scene: helloThere
 const messages = [
