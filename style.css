@@ -284,6 +284,8 @@ table{
 }
 #bPlayerBorder{
     padding-left:4vh;
+    padding-bottom:1vh;
+    padding-top:.5vh;
     border-style: none solid solid none;
     border-width:.7vh;
     border-end-end-radius: 3vh .6vh;
@@ -312,15 +314,62 @@ table{
 
 }
 #bPlayerHPBar{
-    background-color:#48B258;
+    margin-left:.5vh;
     height:1vh;
     border:solid;
     border-width:.1;
     border-radius:1vh;
     width:15vh;
 }
+#bPlayerHPFill{
+    background-color:#48B258;
+    height: 100%;
+    width:100%;
+}
 #bPlayerHPText{
+ /**/
+}
 
+#bEnemyInfo{
+    justify-content:start;
+    align-items:flex-start;
+}
+#bEnemyName{
+/**/
+}
+#bEnemyLevel{
+    padding-left:5vh;
+    font-weight:bolder;
+    font-size:2vh;
+}
+#bEnemyBorder{
+    padding-right:4vh;
+    padding-bottom:1vh;
+    padding-top:.5vh;
+    border-style: none none solid solid;
+    border-width:.7vh;
+    border-end-end-radius: 3vh .6vh;
+}
+#bEnemyHP{
+    display:flex;
+    padding-left:1vh;
+    font-size: 1.25vh;
+    font-weight: bolder;
+    text-shadow: .1vh 0, .1vh 0,.1vh 0,.1vh 0,
+                    .1vh 0.1vh 0,.1vh 0,.1vh 0;
+}
+#bEnemyHPBar{
+    margin-left:.5vh;
+    height:1vh;
+    border:solid;
+    border-width:.1;
+    border-radius:1vh;
+    width:15vh;
+}
+#bEnemyHPFill{
+    background-color:#48B258;
+    height: 100%;
+    width:100%;
 }
 
 

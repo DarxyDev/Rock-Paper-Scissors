@@ -13,7 +13,7 @@ const sc_title = {
 
 //////////////////////// Scene: helloThere
 const messages = [
-    'Hello, there!',
+    'Hello there!',
     'I can\'t seem to recall your name.',
     'Could you remind me?',
     () => { getUserName(sc_helloThere) },
