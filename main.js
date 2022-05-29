@@ -1,1 +1,1 @@
-changeScene(sc_battle);
+//changeScene(sc_battle);

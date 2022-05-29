@@ -21,7 +21,7 @@ const messages = [
     'Now, what do you look like?',
     () => { changeScene(sc_characterSelect); },
     'Battle time.',
-    () => { changeScene(sc_battle)}    
+    () => { changeScene(sc_battle) }
 ]
 
 const SC_helloThere = document.getElementById('sc_helloThere');
@@ -40,7 +40,6 @@ const sc_helloThere = {
 function initialText(target) {
     target.currentMessage++;
     slowText(target.messages[target.currentMessage], target.textBox, () => { shakeTarget(target.odin) });
-    console.log(sc_helloThere.currentMessage);
 }
 function continueText(target) {
     if (slowTextRunning) {
@@ -101,7 +100,10 @@ const sc_characterSelect = {
 
 sc_characterSelect.arrowLeft.addEventListener('click', () => { cycleCharacterIcon(false) });
 sc_characterSelect.arrowRight.addEventListener('click', cycleCharacterIcon);
-sc_characterSelect.selectButton.addEventListener('click', () => {changeScene(sc_helloThere);  });
+sc_characterSelect.selectButton.addEventListener('click', () => {
+    changeScene(sc_helloThere);
+    enemyIconChoices.splice(currentIcon);
+});
 
 let currentIcon = 0;
 function cycleCharacterIcon(next = true) {
@@ -119,11 +121,11 @@ function cycleCharacterIcon(next = true) {
 //////////////////////// Scene: Battle
 let battleButtons = [];
 let battleArrows = [];
-for(let i = 0; i < 4; i++){
-    battleButtons.push(document.getElementById('button'+(i)));
+for (let i = 0; i < 4; i++) {
+    battleButtons.push(document.getElementById('button' + (i)));
     battleButtons[i].addEventListener('mouseover', setMenuSelected);
     battleButtons[i].addEventListener('click', useMenuSelected);
-    battleArrows.push(document.getElementById('buttonArrow'+(i)));
+    battleArrows.push(document.getElementById('buttonArrow' + (i)));
 }
 SC_battle = document.getElementById('sc_battle');
 sc_battle = {
@@ -136,28 +138,33 @@ sc_battle = {
     enemyInfo: document.getElementById('bEnemyInfo'),
     keyPress: log,
     click: log,
-    init: log
+    init: initBattle
 }
-function setBattleIcon(target, icon = playerCharChoices[0]){
+function initBattle() {
+    setBattleIcon(sc_battle.playerIcon, player.icon);
+    setBattleIcon(sc_battle.enemyIcon, getRandomEnemy());
+}
+function setBattleIcon(target, icon = playerCharChoices[0]) {
     target.style.backgroundImage = `url(${icon.toString()})`;
 }
+function setEnemyInfo()
+}
+
 let currentMenu = 0;
-function setMenuSelected(e = null){
-    if(e === null)return;
+function setMenuSelected(e = null) {
+    if (e === null) return;
     let key = e.target.getAttribute('data-key');
     sc_battle.arrows[currentMenu].classList.add('invisible');
     currentMenu = key;
     sc_battle.arrows[key].classList.remove('invisible');
-
-
 }
-function useMenuSelected(){
+function useMenuSelected() {
     let selected = sc_battle.buttons[currentMenu];
-    console.log(selected.textContent);
+    console.log(selected.textContent + ' was used. Add battle mechanics.');//replace with battle mechanics
 }
 setMenuSelected();
 console.log('working on scenes.js -->battle');
 ////////////////////////universal functions
 function log(e = '') {
-       // console.log(e);
+    // console.log(e);
 }
