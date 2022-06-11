@@ -1,13 +1,20 @@
 const playerCharChoices = ['images/mersnow400x400.png','images/mreow_400x400.png','images/odin-mascot.svg'];
+let enemyIconChoices = playerCharChoices;
 
 const player = {
+    name: 'Player',
     icon: playerCharChoices[0],
-    health: 5
-    
+    health: 5,
+    level: 1
+}
+const enemy = {
+    name:'Squirtle',
+    icon: enemyIconChoices[0],
+    health: 5,
+    level: 1
 }
 
-let enemyIconChoices = playerCharChoices; //need to remove player.icon from options when icon is chosen
-function getRandomEnemy(){
+function setRandomEnemy(){
     let enemyIndex = Math.floor(Math.random() * enemyIconChoices.length);
-    return enemyIconChoices[enemyIndex];
+    enemy.icon = enemyIconChoices[enemyIndex];
 }

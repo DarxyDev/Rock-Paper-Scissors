@@ -58,7 +58,7 @@ function getUserName(target) {
     target.keyPress = keyPressUserName;
     slowText('What is your name?', target.textBox, () => { shakeTarget(target.odin) });
 }
-const MIN_NAME_COUNT = 3;
+const MIN_NAME_COUNT = 2;
 const MAX_NAME_COUNT = 8;
 let kPUN_firstRun = true;
 function keyPressUserName(e) {
@@ -69,6 +69,7 @@ function keyPressUserName(e) {
     }
     let key = e.key;
     if (key == 'Enter' && userName.length >= MIN_NAME_COUNT) {
+        player.name = userName;
         sc_helloThere.keyPress = () => { continueText(sc_helloThere) };
         continueText(sc_helloThere);
     }
@@ -102,7 +103,7 @@ sc_characterSelect.arrowLeft.addEventListener('click', () => { cycleCharacterIco
 sc_characterSelect.arrowRight.addEventListener('click', cycleCharacterIcon);
 sc_characterSelect.selectButton.addEventListener('click', () => {
     changeScene(sc_helloThere);
-    enemyIconChoices.splice(currentIcon);
+    enemyIconChoices.splice(currentIcon, 1);
 });
 
 let currentIcon = 0;
@@ -141,13 +142,23 @@ sc_battle = {
     init: initBattle
 }
 function initBattle() {
-    setBattleIcon(sc_battle.playerIcon, player.icon);
-    setBattleIcon(sc_battle.enemyIcon, getRandomEnemy());
+    setPlayerInfo();
+    setEnemyInfo();
 }
 function setBattleIcon(target, icon = playerCharChoices[0]) {
     target.style.backgroundImage = `url(${icon.toString()})`;
 }
-function setEnemyInfo()
+function setPlayerInfo(){
+    setBattleIcon(sc_battle.playerIcon, player.icon);
+    document.getElementById('bPlayerName').textContent = player.name;
+    document.getElementById('bPlayerLevel').textContent = player.level;
+    document.getElementById('bPlayerHPText').textContent = `${player.health}/${player.health}`;
+}
+function setEnemyInfo(){
+    setRandomEnemy();
+    setBattleIcon(sc_battle.enemyIcon, enemy.icon);
+    document.getElementById('bEnemyName').textContent = enemy.name;
+    document.getElementById('bEnemyLevel').textContent = enemy.level;
 }
 
 let currentMenu = 0;
