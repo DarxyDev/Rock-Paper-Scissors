@@ -139,6 +139,6 @@ function resetStats(){
     playerElements.hpBar.style.width = '100%';
     enemyElements.hpBar.style.width = '100%';
 }
-console.log('todo: add battle animations. game skips message after character select');
+console.log('todo: add battle animations.');
 
 //need to use slowtext on popupbox and remove it with click once finished... maybe.

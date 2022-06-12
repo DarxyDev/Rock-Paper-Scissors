@@ -35,9 +35,10 @@ async function pushText(target, letter){
     target.textContent += letter;
 }
 function timer(ms){ return new Promise(res => setTimeout(res, ms));}
-
+let finishSlowTextBlocked = false;
 function finishSlowText(){
-    interruptSlowText = true;
+    if(!finishSlowTextBlocked)interruptSlowText = true;
+    else finishSlowTextBlocked = false;
 }
 
 function isLetter(char){

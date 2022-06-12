@@ -15,7 +15,7 @@ let currentScene = sc_title;
 function changeScene(scene) {
     if (scene == undefined) return;
     currentScene.main.classList.add('hidden');
-    document.removeEventListener('click', currentScene.click);///will this cause errors?
+    document.removeEventListener('click', currentScene.click);
     currentScene = scene;
     currentScene.main.classList.remove('hidden');
     if (currentScene.init != undefined) currentScene.init();
@@ -31,10 +31,9 @@ const messages = [
     '${userName} is it?',
     'Now, what do you look like?',
     () => { changeScene(sc_characterSelect); },
-    "It's a dangerous world out there, let's practice fighting!",
+    'It\'s a dangerous world out there, let\'s practice fighting!',
     () => { changeScene(sc_battle) }
 ]
-
 let getUserNameRunning = false;
 const SC_helloThere = document.getElementById('sc_helloThere');
 const sc_helloThere = {
@@ -111,12 +110,12 @@ const sc_characterSelect = {
     characterImage: document.getElementById('characterImage'),
     keyPress: log,
     click: log,
-    init: log
+    init: ()=>{finishSlowTextBlocked = true;}
 }
 
 sc_characterSelect.arrowLeft.addEventListener('click', () => { cycleCharacterIcon(false) });
 sc_characterSelect.arrowRight.addEventListener('click', cycleCharacterIcon);
-sc_characterSelect.selectButton.addEventListener('click', () => {
+sc_characterSelect.selectButton.addEventListener('click', () => { //endscene
     changeScene(sc_helloThere);
     enemyIconChoices.splice(currentIcon, 1);
     enemyNameChoices.splice(currentIcon, 1);
