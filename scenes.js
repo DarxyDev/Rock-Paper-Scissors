@@ -171,10 +171,8 @@ function setMenuSelected(e = null) {
 }
 function useMenuSelected() {
     let selected = sc_battle.buttons[currentMenu];
-    console.log(selected.textContent + ' was used. Add battle mechanics.');//replace with battle mechanics
+    useMove(selected.textContent);
 }
-setMenuSelected();
-console.log('working on scenes.js -->battle');
 ////////////////////////universal functions
 function log(e = '') {
     // console.log(e);
