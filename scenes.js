@@ -1,4 +1,6 @@
 let userName = '';
+let totalGames = 0;
+let totalWins = 0;
 
 ////////////////////////Scene: title
 const SC_title = document.getElementById('sc_title');
@@ -168,6 +170,7 @@ sc_battle = {
     init: initBattle
 }
 function initBattle() {
+    totalGames++;
     setPlayerInfo();
     setEnemyInfo();
 }

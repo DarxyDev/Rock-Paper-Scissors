@@ -100,9 +100,44 @@ function damageEnemy(){
         return endBattle(WIN);
     }
 }
-function endBattle(state){
+ async function endBattle(state){
     console.log('battle ended');
     console.log(`You ${state}!`);
+    timer(300);
+    let newMessages = [
+        '',
+        'You have won ${totalWins} of ${totalGames} games.',
+        "Let's get you some more practice before you venture out into the world.",
+        ()=>{changeScene(sc_battle)}
+    ];
+    if(state == WIN) {
+        totalWins++;
+        newMessages[0] = 'Congratulations, you won!';
+    }
+    if(state == LOSE){
+        newMessages[0] = 'Unfortunately, you were bested this time.';
+        newMessages[2] = "Why don't you try again?";
+    }
+    if(totalWins >= 5){
+        newMessages = [
+            'There is nothing more I can teach you.',
+            'I hope you enjoyed my project.'
+        ]
+    }
+    sc_helloThere.messages = newMessages;
+    sc_helloThere.currentMessage = -1;
+    resetStats();
+    removePopupText();
+    changeScene(sc_helloThere);
+
+
+}
+function resetStats(){
+    console.log('player and enemy hp need to be reset here');
+    enemyElements.hiddenHP = '5/5';
+    playerElements.hpText.textContent = '5/5';
+    playerElements.hpBar.style.width = '100%';
+    enemyElements.hpBar.style.width = '100%';
 }
 console.log('todo: add battle animations. add popup text box. add battle end scene');
 
