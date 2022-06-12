@@ -22,6 +22,8 @@ enemyElements = {
 function useMove(move = 'Run'){
     let enemyMove = getEnemyTurn();
     let turnResult = turnWin(move, enemyMove);
+    enemyAttack(sc_battle.playerIcon);
+    playerAttack(sc_battle.enemyIcon);
     addPopupText(setBattlePopupText(move, enemyMove, turnResult));
     switch (turnResult){
         case WIN:

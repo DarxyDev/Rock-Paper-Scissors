@@ -50,3 +50,28 @@
 .shake{
     animation: shake .05s;
 }
+
+@keyframes playerAttack{
+    0%{
+        transform:rotate(0turn);
+    }
+    100%{
+        transform:rotate(1turn);
+    }
+
+}
+.playerAttack{
+    animation: playerAttack .5s;
+}
+@keyframes enemyAttack{
+    0%{
+    transform:rotate(0turn);
+}
+100%{
+    transform:rotate(1turn);
+}
+
+}
+.enemyAttack{
+    animation: enemyAttack .5s;
+}

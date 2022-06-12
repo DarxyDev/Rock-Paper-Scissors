@@ -11,6 +11,16 @@ function shakeTarget(target){
     target.classList.add('shake');
 
 }
+function playerAttack(target){
+    target.classList.remove('playerAttack');
+    target.offsetWidth;
+    target.classList.add('playerAttack');
+}
+function enemyAttack(target){
+    target.classList.remove('enemyAttack');
+    target.offsetWidth;
+    target.classList.add('enemyAttack');
+}
 ////////////////////////Universal
 function getKey(e){
     currentScene.keyPress(e);
