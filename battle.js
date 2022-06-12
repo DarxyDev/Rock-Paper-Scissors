@@ -21,10 +21,9 @@ enemyElements = {
 //functions
 function useMove(move = 'Run'){
     let enemyMove = getEnemyTurn();
-    let playerWon = turnWin(move, enemyMove);
-    console.log(playerWon);
-    console.log(playerElements.hpText.textContent);
-    switch (playerWon){
+    let turnResult = turnWin(move, enemyMove);
+    addPopupText(setBattlePopupText(move, enemyMove, turnResult));
+    switch (turnResult){
         case WIN:
             damageEnemy();
             break;
@@ -34,6 +33,9 @@ function useMove(move = 'Run'){
         case TIE:
             break;
     }
+}
+function setBattlePopupText(playerMove, enemyMove, battleResult){
+    return(`You used ${playerMove.toLowerCase()} and your opponent used ${enemyMove.toLowerCase()}.\n\n You ${battleResult} the turn!`)
 }
 function turnWin(playerMove, enemyMove){
     if(playerMove == RUN) return RUN;
@@ -103,3 +105,5 @@ function endBattle(state){
     console.log(`You ${state}!`);
 }
 console.log('todo: add battle animations. add popup text box. add battle end scene');
+
+//need to use slowtext on popupbox and remove it with click once finished.

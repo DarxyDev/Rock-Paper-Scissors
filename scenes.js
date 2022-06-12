@@ -1,7 +1,5 @@
 let userName = '';
 
-//NOTES: messages is using original value of userName instead of updating it. Must add message by hand.
-
 ////////////////////////Scene: title
 const SC_title = document.getElementById('sc_title');
 const sc_title = {
@@ -10,6 +8,17 @@ const sc_title = {
     click: () => { changeScene(sc_helloThere); },
 }
 
+let currentScene = sc_title;
+
+function changeScene(scene){
+    if(scene == undefined) return;
+    currentScene.main.classList.add('hidden');
+    document.removeEventListener('click', currentScene.click);///will this cause errors?
+    currentScene = scene;
+    currentScene.main.classList.remove('hidden');
+    if(currentScene.init != undefined)currentScene.init();
+    if(scene.click != undefined) document.addEventListener('click', scene.click);
+}
 
 //////////////////////// Scene: helloThere
 const messages = [
@@ -127,6 +136,23 @@ for (let i = 0; i < 4; i++) {
     battleButtons[i].addEventListener('mouseover', setMenuSelected);
     battleButtons[i].addEventListener('click', useMenuSelected);
     battleArrows.push(document.getElementById('buttonArrow' + (i)));
+}
+let popupTextBox = document.getElementById('popupTextBox');
+let popupTextBoxDisplayed = false;
+ async function addPopupText(text){
+    if(typeof(text)!== typeof('')) return;
+    popupTextBox.innerText = text;
+    popupTextBox.classList.remove('invisible');
+    popupTextBoxDisplayed = true;
+    console.log('popUpText added');
+    await timer(100);
+    document.addEventListener('click', removePopupText);
+} 
+function removePopupText(){
+    popupTextBox.classList.add('invisible');
+    popupTextBoxDisplayed = false;
+    console.log('popUpText removed');
+    document.removeEventListener('click', removePopupText);
 }
 SC_battle = document.getElementById('sc_battle');
 sc_battle = {

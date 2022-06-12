@@ -371,3 +371,12 @@ table{
     height: 100%;
     width:100%;
 }
+#popupTextBox{
+    position:absolute;
+    padding:2%;
+    width:94.75%;
+    height:27%;
+    border:solid;
+    border-width:.5vh;
+    background-color:white;
+}
