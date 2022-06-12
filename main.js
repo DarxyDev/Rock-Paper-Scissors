@@ -1,4 +1,4 @@
-changeScene(sc_battle);
+changeScene(sc_title);
 
 const viewscreen = document.getElementById('viewscreen');
 

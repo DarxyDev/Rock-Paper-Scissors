@@ -102,7 +102,6 @@ function damageEnemy(){
 }
  async function endBattle(state){
     console.log('battle ended');
-    console.log(`You ${state}!`);
     timer(300);
     let newMessages = [
         '',
@@ -119,7 +118,9 @@ function damageEnemy(){
         newMessages[2] = "Why don't you try again?";
     }
     if(totalWins >= 5){
+        console.log('2 games won');
         newMessages = [
+            'Congratulations, you have won ${totalWins} of ${totalGames} games!',
             'There is nothing more I can teach you.',
             'I hope you enjoyed my project.'
         ]
@@ -133,12 +134,11 @@ function damageEnemy(){
 
 }
 function resetStats(){
-    console.log('player and enemy hp need to be reset here');
     enemyElements.hiddenHP = '5/5';
     playerElements.hpText.textContent = '5/5';
     playerElements.hpBar.style.width = '100%';
     enemyElements.hpBar.style.width = '100%';
 }
-console.log('todo: add battle animations. add popup text box. add battle end scene');
+console.log('todo: add battle animations. game skips message after character select');
 
-//need to use slowtext on popupbox and remove it with click once finished.
+//need to use slowtext on popupbox and remove it with click once finished... maybe.

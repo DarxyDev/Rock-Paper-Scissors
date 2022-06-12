@@ -12,14 +12,14 @@ const sc_title = {
 
 let currentScene = sc_title;
 
-function changeScene(scene){
-    if(scene == undefined) return;
+function changeScene(scene) {
+    if (scene == undefined) return;
     currentScene.main.classList.add('hidden');
     document.removeEventListener('click', currentScene.click);///will this cause errors?
     currentScene = scene;
     currentScene.main.classList.remove('hidden');
-    if(currentScene.init != undefined)currentScene.init();
-    if(scene.click != undefined) document.addEventListener('click', scene.click);
+    if (currentScene.init != undefined) currentScene.init();
+    if (scene.click != undefined) document.addEventListener('click', scene.click);
 }
 
 //////////////////////// Scene: helloThere
@@ -31,10 +31,11 @@ const messages = [
     '${userName} is it?',
     'Now, what do you look like?',
     () => { changeScene(sc_characterSelect); },
-    'Battle time.',
+    "It's a dangerous world out there, let's practice fighting!",
     () => { changeScene(sc_battle) }
 ]
 
+let getUserNameRunning = false;
 const SC_helloThere = document.getElementById('sc_helloThere');
 const sc_helloThere = {
     main: SC_helloThere,
@@ -44,7 +45,7 @@ const sc_helloThere = {
     currentMessage: -1,
     nextScene: null,
     keyPress: () => { continueText(sc_helloThere) },
-    click: log,
+    click: () => { if(!getUserNameRunning || slowTextRunning)continueText(sc_helloThere) },
     init: () => { initialText(sc_helloThere); }
 }
 
@@ -66,6 +67,7 @@ function continueText(target) {
     }
 }
 function getUserName(target) {
+    getUserNameRunning = true; 
     target.keyPress = keyPressUserName;
     slowText('What is your name?', target.textBox, () => { shakeTarget(target.odin) });
 }
@@ -75,13 +77,15 @@ let kPUN_firstRun = true;
 function keyPressUserName(e) {
     if (slowTextRunning) { finishSlowText(); return; }
     if (kPUN_firstRun) {
+        kPUN_finished = false;
         kPUN_firstRun = false;
         sc_helloThere.textBox.textContent += '\r\n';
     }
     let key = e.key;
-    if (key == 'Enter' && userName.length >= MIN_NAME_COUNT) {
+    if (key == 'Enter' && userName.length >= MIN_NAME_COUNT) { //kPUN finish
         player.name = userName;
         sc_helloThere.keyPress = () => { continueText(sc_helloThere) };
+        getUserNameRunning = false; 
         continueText(sc_helloThere);
     }
     if (key == 'Backspace' && userName.length > 0) {
@@ -115,6 +119,7 @@ sc_characterSelect.arrowRight.addEventListener('click', cycleCharacterIcon);
 sc_characterSelect.selectButton.addEventListener('click', () => {
     changeScene(sc_helloThere);
     enemyIconChoices.splice(currentIcon, 1);
+    enemyNameChoices.splice(currentIcon, 1);
 });
 
 let currentIcon = 0;
@@ -141,19 +146,17 @@ for (let i = 0; i < 4; i++) {
 }
 let popupTextBox = document.getElementById('popupTextBox');
 let popupTextBoxDisplayed = false;
- async function addPopupText(text){
-    if(typeof(text)!== typeof('')) return;
+async function addPopupText(text) {
+    if (typeof (text) !== typeof ('')) return;
     popupTextBox.innerText = text;
     popupTextBox.classList.remove('invisible');
     popupTextBoxDisplayed = true;
-    console.log('popUpText added');
     await timer(100);
     document.addEventListener('click', removePopupText);
-} 
-function removePopupText(){
+}
+function removePopupText() {
     popupTextBox.classList.add('invisible');
     popupTextBoxDisplayed = false;
-    console.log('popUpText removed');
     document.removeEventListener('click', removePopupText);
 }
 SC_battle = document.getElementById('sc_battle');
@@ -177,13 +180,13 @@ function initBattle() {
 function setBattleIcon(target, icon = playerCharChoices[0]) {
     target.style.backgroundImage = `url(${icon.toString()})`;
 }
-function setPlayerInfo(){
+function setPlayerInfo() {
     setBattleIcon(sc_battle.playerIcon, player.icon);
     document.getElementById('bPlayerName').textContent = player.name;
     document.getElementById('bPlayerLevel').textContent = player.level;
     document.getElementById('bPlayerHPText').textContent = `${player.health}/${player.health}`;
 }
-function setEnemyInfo(){
+function setEnemyInfo() {
     setRandomEnemy();
     setBattleIcon(sc_battle.enemyIcon, enemy.icon);
     document.getElementById('bEnemyName').textContent = enemy.name;
