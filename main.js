@@ -1,25 +1,24 @@
 changeScene(sc_title);
-
 const viewscreen = document.getElementById('viewscreen');
 
 document.addEventListener('keydown', getKey);
 
-////////////////////////animation test
+////////////////////////animation functions
 function shakeTarget(target){
     target.classList.remove('shake');
     target.offsetWidth;
     target.classList.add('shake');
 
 }
-function playerAttack(target){
+function playerAttack(target, cancel = false){
     target.classList.remove('playerAttack');
     target.offsetWidth;
-    target.classList.add('playerAttack');
+    if(!cancel)target.classList.add('playerAttack');
 }
-function enemyAttack(target){
+function enemyAttack(target, cancel = false){
     target.classList.remove('enemyAttack');
     target.offsetWidth;
-    target.classList.add('enemyAttack');
+    if(!cancel)target.classList.add('enemyAttack');
 }
 ////////////////////////Universal
 function getKey(e){

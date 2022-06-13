@@ -150,7 +150,7 @@ async function addPopupText(text) {
     popupTextBox.innerText = text;
     popupTextBox.classList.remove('invisible');
     popupTextBoxDisplayed = true;
-    await timer(100);
+    await timer(100); //prevents previous clicks from triggering instantly
     document.addEventListener('click', removePopupText);
 }
 function removePopupText() {
@@ -182,14 +182,14 @@ function setBattleIcon(target, icon = playerCharChoices[0]) {
 function setPlayerInfo() {
     setBattleIcon(sc_battle.playerIcon, player.icon);
     document.getElementById('bPlayerName').textContent = player.name;
-    document.getElementById('bPlayerLevel').textContent = player.level;
+   // document.getElementById('bPlayerLevel').textContent = player.level;
     document.getElementById('bPlayerHPText').textContent = `${player.health}/${player.health}`;
 }
 function setEnemyInfo() {
     setRandomEnemy();
     setBattleIcon(sc_battle.enemyIcon, enemy.icon);
     document.getElementById('bEnemyName').textContent = enemy.name;
-    document.getElementById('bEnemyLevel').textContent = enemy.level;
+   // document.getElementById('bEnemyLevel').textContent = enemy.level;
 }
 
 let currentMenu = 0;

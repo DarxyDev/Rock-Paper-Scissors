@@ -20,10 +20,14 @@ enemyElements = {
 }
 //functions
 function useMove(move = 'Run'){
+    if(move == RUN){
+        addPopupText("You can't run from a mock battle!");
+        return;
+    }
     let enemyMove = getEnemyTurn();
     let turnResult = turnWin(move, enemyMove);
-    enemyAttack(sc_battle.playerIcon);
-    playerAttack(sc_battle.enemyIcon);
+    enemyAttack(sc_battle.enemyIcon);
+    playerAttack(sc_battle.playerIcon);
     addPopupText(setBattlePopupText(move, enemyMove, turnResult));
     switch (turnResult){
         case WIN:
@@ -103,8 +107,9 @@ function damageEnemy(){
     }
 }
  async function endBattle(state){
-    console.log('battle ended');
-    timer(300);
+    enemyAttack(sc_battle.enemyIcon, true);
+    playerAttack(sc_battle.playerIcon, true);
+     await timer(500);
     let newMessages = [
         '',
         'You have won ${totalWins} of ${totalGames} games.',
@@ -141,6 +146,6 @@ function resetStats(){
     playerElements.hpBar.style.width = '100%';
     enemyElements.hpBar.style.width = '100%';
 }
-console.log('todo: add battle animations.');
+console.log('todo: center arrows on character select. add flashing text on name input screen');
 
 //need to use slowtext on popupbox and remove it with click once finished... maybe.

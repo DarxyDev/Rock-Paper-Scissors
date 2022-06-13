@@ -262,6 +262,7 @@ table{
 }
 #bPlayerIcon{
     background-image: url('images/mersnow400x400.png');
+    position:relative;
     transform:scalex(-1);
 }
 .battleIcon{
@@ -349,6 +350,9 @@ table{
     border-style: none none solid solid;
     border-width:.7vh;
     border-end-end-radius: 3vh .6vh;
+}
+#bEnemyIcon{
+    position:relative;
 }
 #bEnemyHP{
     display:flex;

@@ -53,25 +53,63 @@
 
 @keyframes playerAttack{
     0%{
-        transform:rotate(0turn);
+        left:0vh;
+        bottom:0vh;
+        transform:scaleX(-1);
+    }
+    50%{
+        left:11vh;
+        bottom:11vh;
+        transform-origin:center;
+        transform:rotate(5deg);
+        transform:scaleX(-1);
+    }
+    80%{
+        left:8vh;
+        bottom:8vh;
+        transform-origin:60% 60%;
+        transform:rotate(25deg);
+        transform:scaleX(.3);
     }
     100%{
-        transform:rotate(1turn);
+        left:0vh;
+        bottom:0vh;
+        transform-origin:center;
+        transform:rotate(0deg);
+        transform:scaleX(-1);
     }
 
 }
 .playerAttack{
-    animation: playerAttack .5s;
+    animation: playerAttack .75s;
 }
 @keyframes enemyAttack{
     0%{
-    transform:rotate(0turn);
-}
-100%{
-    transform:rotate(1turn);
-}
+        right:0vh;
+        top:0vh;
+    }
+    50%{
+        right:11vh;
+        top:11vh;
+        transform-origin:center;
+        transform:rotate(-5deg);
+        transform:scaleX(1);
+    }
+    80%{
+        right:8vh;
+        top:11vh;
+        transform-origin:40% 40%;
+        transform:rotate(-25deg);
+        transform:scaleX(-.3);
+    }
+    100%{
+        right:0vh;
+        top:0vh;
+        transform-origin:center;
+        transform:rotate(0deg);
+    }
 
 }
 .enemyAttack{
-    animation: enemyAttack .5s;
+    animation: enemyAttack .75s;
 }
