@@ -1,12 +1,12 @@
 @keyframes flashing{
     0%{
-        opacity:1;
+        opacity:0;
     }
-    20%{
+    80%{
         opacity:1;
     }
     100%{
-        opacity:0;
+        opacity:1;
     }
 }
 
@@ -57,7 +57,7 @@
         bottom:0vh;
         transform:scaleX(-1);
     }
-    50%{
+    30%{
         left:11vh;
         bottom:11vh;
         transform-origin:center;
@@ -81,14 +81,14 @@
 
 }
 .playerAttack{
-    animation: playerAttack .75s;
+    animation: playerAttack 1.5s;
 }
 @keyframes enemyAttack{
     0%{
         right:0vh;
         top:0vh;
     }
-    50%{
+    30%{
         right:11vh;
         top:11vh;
         transform-origin:center;
@@ -111,5 +111,32 @@
 
 }
 .enemyAttack{
-    animation: enemyAttack .75s;
+    animation: enemyAttack 1.5s;
+}
+
+@keyframes playerRun{
+    0%{
+        top:0vh;
+        right:0vh;
+        transform:scaleX(-1);
+    }
+    10%{
+        top:3vh;
+        right:3vh;
+        transform:scaleX(1);
+    }
+    50%{
+        top:30vh;
+        right:30vh;
+        transform:scaleX(1);
+    }
+    100%{
+        top:0vh;
+        right:0vh;
+        transform:scaleX(-1);
+    }
+
+}
+.playerRun{
+    animation: playerRun 1.5s;
 }

@@ -1,4 +1,4 @@
-changeScene(sc_title);
+changeScene(sc_battle);
 const viewscreen = document.getElementById('viewscreen');
 
 document.addEventListener('keydown', getKey);
@@ -19,6 +19,11 @@ function enemyAttack(target, cancel = false){
     target.classList.remove('enemyAttack');
     target.offsetWidth;
     if(!cancel)target.classList.add('enemyAttack');
+}
+function playerRun(target, cancel = false){
+    target.classList.remove('playerRun');
+    target.offsetWidth;
+    if(!cancel)target.classList.add('playerRun');
 }
 ////////////////////////Universal
 function getKey(e){

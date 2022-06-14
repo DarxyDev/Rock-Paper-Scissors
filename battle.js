@@ -7,7 +7,9 @@ const RUN = 'Run';
 const WIN = 'won';
 const LOSE = 'lost';
 const TIE = 'tied';
-
+const CONTINUE = 'continue';
+//quickFix flags
+let gameFinished = false;
 //references
 playerElements = {
     hpBar: document.getElementById('bPlayerHPFill'),
@@ -19,9 +21,14 @@ enemyElements = {
     hiddenHP: '5/5'
 }
 //functions
+console.log('fix this');
+//create a "either hp at 0 function to cancel moves if either character is dead"
 function useMove(move = 'Run'){
+    if(gameFinished) return;
+    playerRun(sc_battle.playerIcon, true); //leaving this class on after a run move prevents attack move.
     if(move == RUN){
-        addPopupText("You can't run from a mock battle!");
+        playerRun(sc_battle.playerIcon);
+        addPopupText("You can't run from this!");
         return;
     }
     let enemyMove = getEnemyTurn();
@@ -107,9 +114,10 @@ function damageEnemy(){
     }
 }
  async function endBattle(state){
+    gameFinished = true;
+     await timer(1500);
     enemyAttack(sc_battle.enemyIcon, true);
     playerAttack(sc_battle.playerIcon, true);
-     await timer(500);
     let newMessages = [
         '',
         'You have won ${totalWins} of ${totalGames} games.',
@@ -125,7 +133,6 @@ function damageEnemy(){
         newMessages[2] = "Why don't you try again?";
     }
     if(totalWins >= 5){
-        console.log('2 games won');
         newMessages = [
             'Congratulations, you have won ${totalWins} of ${totalGames} games!',
             'There is nothing more I can teach you.',
@@ -145,7 +152,5 @@ function resetStats(){
     playerElements.hpText.textContent = '5/5';
     playerElements.hpBar.style.width = '100%';
     enemyElements.hpBar.style.width = '100%';
+    gameFinished = false;
 }
-console.log('todo: center arrows on character select. add flashing text on name input screen');
-
-//need to use slowtext on popupbox and remove it with click once finished... maybe.

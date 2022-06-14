@@ -23,11 +23,21 @@ function changeScene(scene) {
 }
 
 //////////////////////// Scene: helloThere
+const typeHereDiv = document.getElementById('typeHere');
+const getUserNameText = 'What is your name?';
+async function addTypeHere(){
+    await timer(TEXTDELAY * getUserNameText.length + 1000);
+    typeHereDiv.classList.remove('invisible');
+    typeHereDiv.classList.add('flashing');
+}
 const messages = [
     'Hello there!',
     'I can\'t seem to recall your name.',
     'Could you remind me?',
-    () => { getUserName(sc_helloThere) },
+    () => { 
+        getUserName(sc_helloThere);
+        addTypeHere();
+    },
     '${userName} is it?',
     'Now, what do you look like?',
     () => { changeScene(sc_characterSelect); },
@@ -68,8 +78,7 @@ function continueText(target) {
 function getUserName(target) {
     getUserNameRunning = true; 
     target.keyPress = keyPressUserName;
-    slowText('What is your name?', target.textBox, () => { shakeTarget(target.odin) });
-}
+    slowText(getUserNameText, target.textBox, () => { shakeTarget(target.odin) });}
 const MIN_NAME_COUNT = 2;
 const MAX_NAME_COUNT = 8;
 let kPUN_firstRun = true;
@@ -79,6 +88,7 @@ function keyPressUserName(e) {
         kPUN_finished = false;
         kPUN_firstRun = false;
         sc_helloThere.textBox.textContent += '\r\n';
+        typeHereDiv.remove();
     }
     let key = e.key;
     if (key == 'Enter' && userName.length >= MIN_NAME_COUNT) { //kPUN finish

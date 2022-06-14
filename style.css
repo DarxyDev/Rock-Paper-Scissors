@@ -106,6 +106,7 @@ body {
 .titlePressAny{
     position:absolute;
     bottom:20%;
+    opacity:0;
     animation: flashing 1s infinite alternate;
 }
 /*helloThere*/
@@ -143,6 +144,15 @@ body {
     white-space: pre-line;
     padding:1%;
 }
+#typeHere{
+    position:absolute;
+    opacity:0;
+    top:5.4vh;
+    color:gray;
+}
+.flashing{
+    animation: flashing 1s infinite alternate;
+}
 
 /*characterSelect*/
 #sc_characterSelect{
@@ -156,11 +166,11 @@ body {
 
 .arrow{
     width:30%;
-    padding-top:75%;
     animation: arrowAnimation 1s infinite alternate;
+    padding-bottom:30%;
     font-family:pokemonTitle;
     font-size: 12vh;
-    text-align:center;
+    text-align:top;
 }
 .arrowContainer{
     background-color:white;
@@ -169,6 +179,7 @@ body {
     border-width: .6vh;
     cursor:pointer;
     margin:0% 1%;
+    padding: 5% 0%;
 }
 .arrowContainer.left{
     padding-right:4%;
