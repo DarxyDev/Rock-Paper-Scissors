@@ -167,6 +167,7 @@ function removePopupText() {
     popupTextBox.classList.add('invisible');
     popupTextBoxDisplayed = false;
     document.removeEventListener('click', removePopupText);
+    if(gameFinished !== false) endBattle(gameFinished);
 }
 SC_battle = document.getElementById('sc_battle');
 sc_battle = {

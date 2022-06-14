@@ -10,6 +10,8 @@ const TIE = 'tied';
 const CONTINUE = 'continue';
 //quickFix flags
 let gameFinished = false;
+//testing
+let forceMove = false; //change to the move you want the enemy to always use. false for random
 //references
 playerElements = {
     hpBar: document.getElementById('bPlayerHPFill'),
@@ -21,10 +23,8 @@ enemyElements = {
     hiddenHP: '5/5'
 }
 //functions
-console.log('fix this');
-//create a "either hp at 0 function to cancel moves if either character is dead"
 function useMove(move = 'Run'){
-    if(gameFinished) return;
+    if(gameFinished !== false) return;
     playerRun(sc_battle.playerIcon, true); //leaving this class on after a run move prevents attack move.
     if(move == RUN){
         playerRun(sc_battle.playerIcon);
@@ -35,7 +35,6 @@ function useMove(move = 'Run'){
     let turnResult = turnWin(move, enemyMove);
     enemyAttack(sc_battle.enemyIcon);
     playerAttack(sc_battle.playerIcon);
-    addPopupText(setBattlePopupText(move, enemyMove, turnResult));
     switch (turnResult){
         case WIN:
             damageEnemy();
@@ -46,6 +45,7 @@ function useMove(move = 'Run'){
         case TIE:
             break;
     }
+    addPopupText(setBattlePopupText(move, enemyMove, turnResult));
 }
 function setBattlePopupText(playerMove, enemyMove, battleResult){
     return(`You used ${playerMove.toLowerCase()} and your opponent used ${enemyMove.toLowerCase()}.\n\n You ${battleResult} the turn!`)
@@ -67,6 +67,7 @@ function turnWin(playerMove, enemyMove){
     return TIE;
 }
 function getEnemyTurn(){
+    if(forceMove != false) return forceMove;
     randomResult = Math.floor(Math.random() * 3);
     if(randomResult == 0) return ROCK;
     if(randomResult == 1) return PAPER;
@@ -93,16 +94,19 @@ function getDenominator(fraction){
     }
     return parseInt(fraction.slice(slashIndex + 1, fraction.length));
 }
-function damagePlayer(){
+async function damagePlayer(){
     let hpFraction = playerElements.hpText.textContent;
     let currentHP = getNumerator(hpFraction) - 1;
     let maxHP = getDenominator(hpFraction);
     hpFraction = `${currentHP}/${maxHP}`;
     playerElements.hpText.textContent = hpFraction;
     playerElements.hpBar.style.width = fracToPercent(hpFraction);
-    if(currentHP <= 0) return endBattle(LOSE);
+    if(currentHP <= 0){ 
+        gameFinished = LOSE;
+        sc_battle.playerIcon.classList.add('characterDeath');
+    }
 }
-function damageEnemy(){
+async function damageEnemy(){
     let hpFraction = enemyElements.hiddenHP;
     let currentHP = getNumerator(hpFraction)-1;
     let maxHP = getDenominator(hpFraction);
@@ -110,12 +114,12 @@ function damageEnemy(){
     enemyElements.hiddenHP = hpFraction;
     enemyElements.hpBar.style.width = fracToPercent(hpFraction);
     if(currentHP <= 0) {
-        return endBattle(WIN);
+        gameFinished = WIN;
+        sc_battle.enemyIcon.classList.add('characterDeath');
+        //add death animation to enemy
     }
 }
- async function endBattle(state){
-    gameFinished = true;
-     await timer(1500);
+    function endBattle(state){
     enemyAttack(sc_battle.enemyIcon, true);
     playerAttack(sc_battle.playerIcon, true);
     let newMessages = [
@@ -153,4 +157,11 @@ function resetStats(){
     playerElements.hpBar.style.width = '100%';
     enemyElements.hpBar.style.width = '100%';
     gameFinished = false;
+    sc_battle.playerIcon.classList.remove('characterDeath');
+    sc_battle.enemyIcon.classList.remove('characterDeath');
+}
+function isGameEnded(){ //unused, might refactor it in.
+    if(enemyElements.hiddenHP <= 0) return true;
+    if(getNumerator(playerElements.hpText.textContent) <= 0) return true;
+    return false;
 }
